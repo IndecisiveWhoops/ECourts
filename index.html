@@ -1,281 +1,221 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px Helvetica; color: #386573; -webkit-text-stroke: #386573}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #000000; -webkit-text-stroke: 0px #000000}
-    span.s3 {text-decoration: underline ; font-kerning: none; -webkit-text-stroke: 0px #386573}
-    span.s4 {text-decoration: underline ; font-kerning: none; color: #386573; -webkit-text-stroke: 0px #386573}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bristol Squash Courts</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .court-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .court-card {
+      background: #fff;
+      border-radius: 8px;
+      width: 300px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .court-card:hover {
+      transform: scale(1.03);
+    }
+    .court-card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .court-card p {
+      margin: 5px 0;
+    }
+    .court-card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+    }
+    .booking-form {
+      background: #fff;
+      padding: 20px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .booking-form h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .booking-form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .booking-form input, .booking-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .booking-form button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .booking-form button:hover {
+      background: #2980b9;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #2c3e50;
+      color: #fff;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;title&gt;Bristol Squash Courts&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">    body {</span></p>
-<p class="p1"><span class="s1">      font-family: Arial, sans-serif;</span></p>
-<p class="p1"><span class="s1">      margin: 0;</span></p>
-<p class="p1"><span class="s1">      padding: 0;</span></p>
-<p class="p1"><span class="s1">      background: #f9f9f9;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    header {</span></p>
-<p class="p1"><span class="s1">      background: #2c3e50;</span></p>
-<p class="p1"><span class="s1">      color: #fff;</span></p>
-<p class="p1"><span class="s1">      padding: 20px;</span></p>
-<p class="p1"><span class="s1">      text-align: center;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    h1 {</span></p>
-<p class="p1"><span class="s1">      margin: 0;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .search-container {</span></p>
-<p class="p1"><span class="s1">      text-align: center;</span></p>
-<p class="p1"><span class="s1">      margin: 20px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    input[type="text"] {</span></p>
-<p class="p1"><span class="s1">      width: 60%;</span></p>
-<p class="p1"><span class="s1">      padding: 10px;</span></p>
-<p class="p1"><span class="s1">      font-size: 16px;</span></p>
-<p class="p1"><span class="s1">      border: 1px solid #ccc;</span></p>
-<p class="p1"><span class="s1">      border-radius: 4px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .court-list {</span></p>
-<p class="p1"><span class="s1">      display: flex;</span></p>
-<p class="p1"><span class="s1">      flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1">      justify-content: center;</span></p>
-<p class="p1"><span class="s1">      margin: 20px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .court-card {</span></p>
-<p class="p1"><span class="s1">      background: #fff;</span></p>
-<p class="p1"><span class="s1">      border: 1px solid #ddd;</span></p>
-<p class="p1"><span class="s1">      border-radius: 8px;</span></p>
-<p class="p1"><span class="s1">      width: 300px;</span></p>
-<p class="p1"><span class="s1">      margin: 10px;</span></p>
-<p class="p1"><span class="s1">      padding: 15px;</span></p>
-<p class="p1"><span class="s1">      box-shadow: 0 2px 5px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .court-card h3 {</span></p>
-<p class="p1"><span class="s1">      margin-top: 0;</span></p>
-<p class="p1"><span class="s1">      color: #2c3e50;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .court-card a {</span></p>
-<p class="p1"><span class="s1">      display: inline-block;</span></p>
-<p class="p1"><span class="s1">      margin-top: 10px;</span></p>
-<p class="p1"><span class="s1">      text-decoration: none;</span></p>
-<p class="p1"><span class="s1">      color: #3498db;</span></p>
-<p class="p1"><span class="s1">      font-weight: bold;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    #map {</span></p>
-<p class="p1"><span class="s1">      width: 100%;</span></p>
-<p class="p1"><span class="s1">      height: 400px;</span></p>
-<p class="p1"><span class="s1">      margin-top: 20px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form {</span></p>
-<p class="p1"><span class="s1">      background: #fff;</span></p>
-<p class="p1"><span class="s1">      padding: 20px;</span></p>
-<p class="p1"><span class="s1">      margin: 20px auto;</span></p>
-<p class="p1"><span class="s1">      width: 90%;</span></p>
-<p class="p1"><span class="s1">      max-width: 500px;</span></p>
-<p class="p1"><span class="s1">      border-radius: 8px;</span></p>
-<p class="p1"><span class="s1">      box-shadow: 0 2px 5px rgba(0,0,0,0.1);</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form h2 {</span></p>
-<p class="p1"><span class="s1">      margin-top: 0;</span></p>
-<p class="p1"><span class="s1">      color: #2c3e50;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form label {</span></p>
-<p class="p1"><span class="s1">      display: block;</span></p>
-<p class="p1"><span class="s1">      margin-top: 10px;</span></p>
-<p class="p1"><span class="s1">      font-weight: bold;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form input, .booking-form select {</span></p>
-<p class="p1"><span class="s1">      width: 100%;</span></p>
-<p class="p1"><span class="s1">      padding: 10px;</span></p>
-<p class="p1"><span class="s1">      margin-top: 5px;</span></p>
-<p class="p1"><span class="s1">      border: 1px solid #ccc;</span></p>
-<p class="p1"><span class="s1">      border-radius: 4px;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form button {</span></p>
-<p class="p1"><span class="s1">      margin-top: 15px;</span></p>
-<p class="p1"><span class="s1">      padding: 10px 15px;</span></p>
-<p class="p1"><span class="s1">      background: #3498db;</span></p>
-<p class="p1"><span class="s1">      color: #fff;</span></p>
-<p class="p1"><span class="s1">      border: none;</span></p>
-<p class="p1"><span class="s1">      border-radius: 4px;</span></p>
-<p class="p1"><span class="s1">      font-size: 16px;</span></p>
-<p class="p1"><span class="s1">      cursor: pointer;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">    .booking-form button:hover {</span></p>
-<p class="p1"><span class="s1">      background: #2980b9;</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;header&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h1&gt;Bristol Squash Courts&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p&gt;Find and book squash courts across Bristol&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/header&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">  &lt;div class="search-container"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;input type="text" id="search" placeholder="Search by name or postcode..." onkeyup="filterCourts()"&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">  &lt;div id="map"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">  &lt;div class="court-list" id="courtList"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">  &lt;!-- Booking Form --&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;div class="booking-form"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h2&gt;Book a Squash Court&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;form id="bookingForm"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;label for="courtSelect"&gt;Select Court:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;select id="courtSelect" required&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;option value=""&gt;-- Choose a court --&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/select&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      &lt;label for="date"&gt;Date:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="date" id="date" required&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      &lt;label for="time"&gt;Time:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="time" id="time" required&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      &lt;label for="name"&gt;Your Name:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="text" id="name" placeholder="Enter your name" required&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      &lt;label for="email"&gt;Email:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;input type="email" id="email" placeholder="Enter your email" required&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      &lt;button type="submit"&gt;Book Now&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/form&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p id="confirmation" style="color:green; font-weight:bold; margin-top:10px;"&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p2"><span class="s2">  <a href="https://cdn.emailjs.com/sdk/3.2.0/email.min.js%3C"><span class="s3">https://cdn.emailjs.com/sdk/3.2.0/email.min.js&lt;</span></a>;/script&gt;</span></p>
-<p class="p2"><span class="s2">  <a href="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js%3C"><span class="s3">https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js&lt;</span></a>;/script&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;script/www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">  &lt;script&gt;</span></p>
-<p class="p1"><span class="s1">    // Courts data</span></p>
-<p class="p1"><span class="s1">    const courts = [</span></p>
-<p class="p1"><span class="s1">      { name: "David Lloyd Club (Long Ashton)", address: "Ashton Road, BS3 2HB", courts: 3, link: "<a href="https://www.squashcourtsnearme.co.uk/squash-courts-by-town/bristol"><span class="s4">https://www.squashcourtsnearme.co.uk/squash-courts-by-town/bristol</span></a>", lat: 51.4403, lng: -2.6226 },</span></p>
-<p class="p1"><span class="s1">      { name: "Redland Green Club", address: "Redland Green, BS6 7HF", courts: 6, link: "<a href="https://sports-facilities.co.uk/sites/Bristol/squash-courts"><span class="s4">https://sports-facilities.co.uk/sites/Bristol/squash-courts</span></a>", lat: 51.4745, lng: -2.6058 },</span></p>
-<p class="p1"><span class="s1">      { name: "Workout Bristol (Welsh Back)", address: "Floating Harbour, BS1 4SB", courts: 4, link: "<a href="https://www.workoutbristol.co.uk/gyms/harbourside"><span class="s4">https://www.workoutbristol.co.uk/gyms/harbourside</span></a>", lat: 51.4513, lng: -2.5935 },</span></p>
-<p class="p1"><span class="s1">      { name: "Kingsdown Leisure Centre", address: "Portland Street, BS2 8HL", courts: 3, link: "<a href="https://pitchbooking.com/book-pitch/ae643031-c394-445e-a95a-2c896eb38550"><span class="s4">https://pitchbooking.com/book-pitch/ae643031-c394-445e-a95a-2c896eb38550</span></a>", lat: 51.4621, lng: -2.5908 },</span></p>
-<p class="p1"><span class="s1">      { name: "UWE Bristol Centre for Sport", address: "Frenchay Campus", courts: 4, link: "<a href="https://www.uwe.ac.uk/life/activities/sport/sports-facilities/squash-courts"><span class="s4">https://www.uwe.ac.uk/life/activities/sport/sports-facilities/squash-courts</span></a>", lat: 51.502, lng: -2.547 }</span></p>
-<p class="p1"><span class="s1">    ];</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    // Display courts</span></p>
-<p class="p1"><span class="s1">    function displayCourts() {</span></p>
-<p class="p1"><span class="s1">      const container = document.getElementById('courtList');</span></p>
-<p class="p1"><span class="s1">      container.innerHTML = '';</span></p>
-<p class="p1"><span class="s1">      courts.forEach(court =&gt; {</span></p>
-<p class="p1"><span class="s1">        const card = document.createElement('div');</span></p>
-<p class="p1"><span class="s1">        card.className = 'court-card';</span></p>
-<p class="p1"><span class="s1">        card.innerHTML = `</span></p>
-<p class="p1"><span class="s1">          &lt;h3&gt;${court.name}&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;p&gt;${court.address}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;p&gt;&lt;strong&gt;Courts:&lt;/strong&gt; ${court.courts}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">          ${court.link}Book on Venue Site&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">        `;</span></p>
-<p class="p1"><span class="s1">        container.appendChild(card);</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      // Populate booking dropdown</span></p>
-<p class="p1"><span class="s1">      const select = document.getElementById('courtSelect');</span></p>
-<p class="p1"><span class="s1">      courts.forEach(court =&gt; {</span></p>
-<p class="p1"><span class="s1">        const option = document.createElement('option');</span></p>
-<p class="p1"><span class="s1">        option.value = court.name;</span></p>
-<p class="p1"><span class="s1">        option.textContent = court.name;</span></p>
-<p class="p1"><span class="s1">        select.appendChild(option);</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    function filterCourts() {</span></p>
-<p class="p1"><span class="s1">      const query = document.getElementById('search').value.toLowerCase();</span></p>
-<p class="p1"><span class="s1">      const container = document.getElementById('courtList');</span></p>
-<p class="p1"><span class="s1">      container.innerHTML = '';</span></p>
-<p class="p1"><span class="s1">      courts.filter(court =&gt; court.name.toLowerCase().includes(query) || court.address.toLowerCase().includes(query))</span></p>
-<p class="p1"><span class="s1">        .forEach(court =&gt; {</span></p>
-<p class="p1"><span class="s1">          const card = document.createElement('div');</span></p>
-<p class="p1"><span class="s1">          card.className = 'court-card';</span></p>
-<p class="p1"><span class="s1">          card.innerHTML = `</span></p>
-<p class="p1"><span class="s1">            &lt;h3&gt;${court.name}&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;p&gt;${court.address}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">            &lt;p&gt;&lt;strong&gt;Courts:&lt;/strong&gt; ${court.courts}&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">            ${court.link}Book on Venue Site&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1">          `;</span></p>
-<p class="p1"><span class="s1">          container.appendChild(card);</span></p>
-<p class="p1"><span class="s1">        });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    function initMap() {</span></p>
-<p class="p1"><span class="s1">      const map = new google.maps.Map(document.getElementById('map'), {</span></p>
-<p class="p1"><span class="s1">        zoom: 12,</span></p>
-<p class="p1"><span class="s1">        center: { lat: 51.4545, lng: -2.5879 }</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">      courts.forEach(court =&gt; {</span></p>
-<p class="p1"><span class="s1">        new google.maps.Marker({</span></p>
-<p class="p1"><span class="s1">          position: { lat: court.lat, lng: court.lng },</span></p>
-<p class="p1"><span class="s1">          map: map,</span></p>
-<p class="p1"><span class="s1">          title: court.name</span></p>
-<p class="p1"><span class="s1">        });</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    // EmailJS setup</span></p>
-<p class="p1"><span class="s1">    emailjs.init("YOUR_EMAILJS_USER_ID");</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    // Firebase setup</span></p>
-<p class="p1"><span class="s1">    const firebaseConfig = {</span></p>
-<p class="p1"><span class="s1">      apiKey: "YOUR_FIREBASE_API_KEY",</span></p>
-<p class="p1"><span class="s1">      authDomain: "YOUR_FIREBASE_PROJECT_ID.firebaseapp.com",</span></p>
-<p class="p1"><span class="s1">      projectId: "YOUR_FIREBASE_PROJECT_ID",</span></p>
-<p class="p1"><span class="s1">      storageBucket: "YOUR_FIREBASE_PROJECT_ID.appspot.com",</span></p>
-<p class="p1"><span class="s1">      messagingSenderId: "YOUR_SENDER_ID",</span></p>
-<p class="p1"><span class="s1">      appId: "YOUR_APP_ID"</span></p>
-<p class="p1"><span class="s1">    };</span></p>
-<p class="p1"><span class="s1">    const app = firebase.initializeApp(firebaseConfig);</span></p>
-<p class="p1"><span class="s1">    const db = firebase.firestore();</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    // Booking form handler</span></p>
-<p class="p1"><span class="s1">    document.getElementById('bookingForm').addEventListener('submit', function(e) {</span></p>
-<p class="p1"><span class="s1">      e.preventDefault();</span></p>
-<p class="p1"><span class="s1">      const booking = {</span></p>
-<p class="p1"><span class="s1">        court: document.getElementById('courtSelect').value,</span></p>
-<p class="p1"><span class="s1">        date: document.getElementById('date').value,</span></p>
-<p class="p1"><span class="s1">        time: document.getElementById('time').value,</span></p>
-<p class="p1"><span class="s1">        name: document.getElementById('name').value,</span></p>
-<p class="p1"><span class="s1">        email: document.getElementById('email').value</span></p>
-<p class="p1"><span class="s1">      };</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      // Save to Firestore</span></p>
-<p class="p1"><span class="s1">      db.collection('bookings').add(booking);</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      // Send email via EmailJS</span></p>
-<p class="p1"><span class="s1">      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', booking)</span></p>
-<p class="p1"><span class="s1">        .then(() =&gt; {</span></p>
-<p class="p1"><span class="s1">          document.getElementById('confirmation').textContent = 'Booking confirmed and email sent!';</span></p>
-<p class="p1"><span class="s1">        }, (error) =&gt; {</span></p>
-<p class="p1"><span class="s1">          console.error('FAILED...', error);</span></p>
-<p class="p1"><span class="s1">        });</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">      this.reset();</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p1"><span class="s1"> </span></p>
-<p class="p1"><span class="s1">    displayCourts();</span></p>
-<p class="p1"><span class="s1">  &lt;/script&gt;</span></p>
-<p class="p2"><span class="s2">  <a href="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&amp;callback=initMap%3C"><span class="s3">https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&amp;callback=initMap&lt;</span></a>;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+  <header>
+    <h1>Bristol Squash Courts</h1>
+    <p>Find and book squash courts across Bristol</p>
+  </header>
+ 
+  <div class="container">
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Search by name or postcode..." onkeyup="filterCourts()">
+    </div>
+ 
+    <div class="court-list" id="courtList"></div>
+ 
+    <!-- Booking Form -->
+    <div class="booking-form">
+      <h2>Book a Squash Court</h2>
+      <form>
+        <label for="courtSelect">Select Court:</label>
+        <select id="courtSelect" required>
+          <option value="">-- Choose a court --</option>
+        </select>
+ 
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+ 
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+ 
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+ 
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+ 
+        <button type="button" onclick="alert('This is a demo. Booking not functional.')">Book Now</button>
+      </form>
+    </div>
+  </div>
+ 
+  <footer>
+    &copy; 2025 Bristol Squash Courts | Demo Site
+  </footer>
+ 
+  <script>
+    const courts = [
+      { name: "David Lloyd Club (Long Ashton)", address: "Ashton Road, BS3 2HB", courts: 3, link: "https://www.squashcourtsnearme.co.uk/squash-courts-by-town/bristol" },
+      { name: "Redland Green Club", address: "Redland Green, BS6 7HF", courts: 6, link: "https://sports-facilities.co.uk/sites/Bristol/squash-courts" },
+      { name: "Workout Bristol (Welsh Back)", address: "Floating Harbour, BS1 4SB", courts: 4, link: "https://www.workoutbristol.co.uk/gyms/harbourside" },
+      { name: "Kingsdown Leisure Centre", address: "Portland Street, BS2 8HL", courts: 3, link: "https://pitchbooking.com/book-pitch/ae643031-c394-445e-a95a-2c896eb38550" },
+      { name: "UWE Bristol Centre for Sport", address: "Frenchay Campus", courts: 4, link: "https://www.uwe.ac.uk/life/activities/sport/sports-facilities/squash-courts" }
+    ];
+ 
+    function displayCourts() {
+      const container = document.getElementById('courtList');
+      container.innerHTML = '';
+      courts.forEach(court => {
+        const card = document.createElement('div');
+        card.className = 'court-card';
+        card.innerHTML = `
+          <h3>${court.name}</h3>
+          <p>${court.address}</p>
+          <p><strong>Courts:</strong> ${court.courts}</p>
+          ${court.link}Book Now</a>
+        `;
+        container.appendChild(card);
+      });
+ 
+      const select = document.getElementById('courtSelect');
+      courts.forEach(court => {
+        const option = document.createElement('option');
+        option.value = court.name;
+        option.textContent = court.name;
+        select.appendChild(option);
+      });
+    }
+ 
+    function filterCourts() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const container = document.getElementById('courtList');
+      container.innerHTML = '';
+      courts.filter(court => court.name.toLowerCase().includes(query) || court.address.toLowerCase().includes(query))
+        .forEach(court => {
+          const card = document.createElement('div');
+          card.className = 'court-card';
+          card.innerHTML = `
+            <h3>${court.name}</h3>
+            <p>${court.address}</p>
+            <p><strong>Courts:</strong> ${court.courts}</p>
+            ${court.link}Book Now</a>
+          `;
+          container.appendChild(card);
+        });
+    }
+ 
+    displayCourts();
+  </script>
 </body>
 </html>
+ 
