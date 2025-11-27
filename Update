@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bristol Squash Courts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    header {
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .search-container {
+      text-align: center;
+      margin: 20px;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .court-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px;
+    }
+    .court-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      margin: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .court-card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .court-card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+    }
+    #map {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+    }
+    .booking-form {
+      background: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .booking-form h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .booking-form label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .booking-form input, .booking-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .booking-form button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .booking-form button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bristol Squash Courts</h1>
+    <p>Find and book squash courts across Bristol</p>
+  </header>
+ 
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search by name or postcode..." onkeyup="filterCourts()">
+  </div>
+ 
+  <div id="map"></div>
+ 
+  <div class="court-list" id="courtList"></div>
+ 
+  <!-- Booking Form -->
+  <div class="booking-form">
+    <h2>Book a Squash Court</h2>
+    <form id="bookingForm">
+      <label for="courtSelect">Select Court:</label>
+      <select id="courtSelect" required>
+        <option value="">-- Choose a court --</option>
+      </select>
+ 
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+ 
+      <label for="time">Time:</label>
+      <input type="time" id="time" required>
+ 
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+ 
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+ 
+      <button type="submit">Book Now</button>
+    </form>
+    <p id="confirmation" style="color:green; font-weight:bold; margin-top:10px;"></p>
+  </div>
+ 
+  https://cdn.emailjs.com/sdk/3.2.0/email.min.js<;/script>
+  https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js<;/script>
+  <script/www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js</script>
+ 
+  <script>
+    // Courts data
+    const courts = [
+      { name: "David Lloyd Club (Long Ashton)", address: "Ashton Road, BS3 2HB", courts: 3, link: "https://www.squashcourtsnearme.co.uk/squash-courts-by-town/bristol", lat: 51.4403, lng: -2.6226 },
+      { name: "Redland Green Club", address: "Redland Green, BS6 7HF", courts: 6, link: "https://sports-facilities.co.uk/sites/Bristol/squash-courts", lat: 51.4745, lng: -2.6058 },
+      { name: "Workout Bristol (Welsh Back)", address: "Floating Harbour, BS1 4SB", courts: 4, link: "https://www.workoutbristol.co.uk/gyms/harbourside", lat: 51.4513, lng: -2.5935 },
+      { name: "Kingsdown Leisure Centre", address: "Portland Street, BS2 8HL", courts: 3, link: "https://pitchbooking.com/book-pitch/ae643031-c394-445e-a95a-2c896eb38550", lat: 51.4621, lng: -2.5908 },
+      { name: "UWE Bristol Centre for Sport", address: "Frenchay Campus", courts: 4, link: "https://www.uwe.ac.uk/life/activities/sport/sports-facilities/squash-courts", lat: 51.502, lng: -2.547 }
+    ];
+ 
+    // Display courts
+    function displayCourts() {
+      const container = document.getElementById('courtList');
+      container.innerHTML = '';
+      courts.forEach(court => {
+        const card = document.createElement('div');
+        card.className = 'court-card';
+        card.innerHTML = `
+          <h3>${court.name}</h3>
+          <p>${court.address}</p>
+          <p><strong>Courts:</strong> ${court.courts}</p>
+          ${court.link}Book on Venue Site</a>
+        `;
+        container.appendChild(card);
+      });
+ 
+      // Populate booking dropdown
+      const select = document.getElementById('courtSelect');
+      courts.forEach(court => {
+        const option = document.createElement('option');
+        option.value = court.name;
+        option.textContent = court.name;
+        select.appendChild(option);
+      });
+    }
+ 
+    function filterCourts() {
+      const query = document.getElementById('search').value.toLowerCase();
+      const container = document.getElementById('courtList');
+      container.innerHTML = '';
+      courts.filter(court => court.name.toLowerCase().includes(query) || court.address.toLowerCase().includes(query))
+        .forEach(court => {
+          const card = document.createElement('div');
+          card.className = 'court-card';
+          card.innerHTML = `
+            <h3>${court.name}</h3>
+            <p>${court.address}</p>
+            <p><strong>Courts:</strong> ${court.courts}</p>
+            ${court.link}Book on Venue Site</a>
+          `;
+          container.appendChild(card);
+        });
+    }
+ 
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: { lat: 51.4545, lng: -2.5879 }
+      });
+      courts.forEach(court => {
+        new google.maps.Marker({
+          position: { lat: court.lat, lng: court.lng },
+          map: map,
+          title: court.name
+        });
+      });
+    }
+ 
+    // EmailJS setup
+    emailjs.init("YOUR_EMAILJS_USER_ID");
+ 
+    // Firebase setup
+    const firebaseConfig = {
+      apiKey: "YOUR_FIREBASE_API_KEY",
+      authDomain: "YOUR_FIREBASE_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_FIREBASE_PROJECT_ID",
+      storageBucket: "YOUR_FIREBASE_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+ 
+    // Booking form handler
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const booking = {
+        court: document.getElementById('courtSelect').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value
+      };
+ 
+      // Save to Firestore
+      db.collection('bookings').add(booking);
+ 
+      // Send email via EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', booking)
+        .then(() => {
+          document.getElementById('confirmation').textContent = 'Booking confirmed and email sent!';
+        }, (error) => {
+          console.error('FAILED...', error);
+        });
+ 
+      this.reset();
+    });
+ 
+    displayCourts();
+  </script>
+  https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap<;/script>
+</body>
+</html>
+ 
+ 
